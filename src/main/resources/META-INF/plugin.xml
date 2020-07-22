@@ -3,14 +3,53 @@
     <name>Racket</name>
     <vendor url="https://github.com/aymanosman">Ayman Osman</vendor>
 
+    <description><![CDATA[
+     Provides support for the <a href="https://racket-lang.org/">Racket</a> programming language.<br>
+
+     Features:<br>
+      <ul>
+          <li>Syntax Highlighting</li>
+      </ul>
+    ]]></description>
+
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="org.racket.services.MyApplicationService"/>
         <projectService serviceImplementation="org.racket.services.MyProjectService"/>
+
+        <!-- file-type factory -->
+
+        <fileType name="Racket"
+                  implementationClass="org.racket.lang.RacketFileType"
+                  fieldName="INSTANCE"
+                  language="Racket"
+                  extensions="rkt"/>
+
+        <!-- parser -->
+
+        <lang.parserDefinition language="Racket"
+                               implementationClass="org.racket.lang.core.parser.RacketParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="Racket"
+                                       implementationClass="org.racket.lang.core.RacketSyntaxHighlighterFactory"/>
+
+        <!-- annotator -->
+
+        <annotator language="Racket"
+                   implementationClass="org.racket.ide.highlight.RacketSyntaxHighlightAnnotator"/>
+
+        <!-- commenter -->
+
+        <lang.commenter language="Racket" implementationClass="org.racket.ide.commenter.RacketCommenter"/>
+
+        <!-- color settings -->
+
+        <colorSettingsPage implementation="org.racket.lang.core.RacketColorSettingsPage"/>
+
     </extensions>
 
     <projectListeners>

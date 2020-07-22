@@ -1,6 +1,8 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.closure
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.grammarkit.tasks.GenerateLexer
+import org.jetbrains.grammarkit.tasks.GenerateParser
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -8,6 +10,8 @@ plugins {
     id("java")
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "1.3.72"
+    // Grammar Kit
+    id("org.jetbrains.grammarkit") version "2020.2.1"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.intellij") version "0.4.21"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
@@ -32,6 +36,12 @@ val platformDownloadSources: String by project
 group = pluginGroup
 version = pluginVersion
 
+sourceSets {
+    main {
+        java.srcDirs("gen")
+    }
+}
+
 // Configure project's dependencies
 repositories {
     mavenCentral()
@@ -54,7 +64,7 @@ intellij {
 //  Plugin Dependencies:
 //  https://www.jetbrains.org/intellij/sdk/docs/basics/plugin_structure/plugin_dependencies.html
 //
-//  setPlugins("java")
+  setPlugins("java")
 }
 
 // Configure detekt plugin.
@@ -79,6 +89,7 @@ tasks {
     listOf("compileKotlin", "compileTestKotlin").forEach {
         getByName<KotlinCompile>(it) {
             kotlinOptions.jvmTarget = "1.8"
+            dependsOn("generateParser")
         }
     }
 
@@ -109,4 +120,21 @@ tasks {
         token(System.getenv("PUBLISH_TOKEN"))
         channels(pluginVersion.split('-').getOrElse(1) { "default" }.split('.').first())
     }
+}
+
+task("generateLexer", GenerateLexer::class) {
+    source = "src/main/grammars/Racket.flex"
+    targetDir = "gen/org/racket/lang/core/lexer/"
+    targetClass = "RacketLexer"
+    purgeOldFiles = true
+    skeleton = "src/main/grammars/idea-flex.skeleton"
+}
+
+task("generateParser", GenerateParser::class) {
+    dependsOn("generateLexer")
+    source = "src/main/grammars/Racket.bnf"
+    targetRoot = "gen"
+    pathToParser = "/org/racket/lang/core/parser/RacketParser.java"
+    pathToPsiRoot = "/org/racket/lang/core/psi"
+    purgeOldFiles = true
 }

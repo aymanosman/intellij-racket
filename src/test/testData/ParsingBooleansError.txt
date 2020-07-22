@@ -1,0 +1,5 @@
+Racket(0,20)
+  PsiElement(RacketTokenType.HASH_LANG)('#lang racket')(0,12)
+  PsiWhiteSpace('\n\n')(12,14)
+  PsiErrorElement:<form>, RacketTokenType.COMMENT, RacketTokenType.CRLF or RacketTokenType.SEXP_COMMENT expected, got '#flase'(14,20)
+    PsiElement(ERROR_ELEMENT)('#flase')(14,20)

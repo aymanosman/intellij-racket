@@ -1,0 +1,54 @@
+{
+  parserClass="org.racket.lang.core.parser.RacketParser"
+
+  implements="org.racket.lang.core.psi.RacketElement"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Racket"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.racket.lang.core.psi"
+  psiImplPackage="org.racket.lang.core.psi.impl"
+
+  elementTypeHolderClass="org.racket.lang.core.psi.RacketElementTypes"
+  elementTypeClass="org.racket.lang.core.psi.RacketElementType"
+  tokenTypeClass="org.racket.lang.core.psi.RacketTokenType"
+
+  psiImplUtilClass="org.racket.lang.core.psi.impl.RacketPsiImplUtil"
+
+  elementTypeFactory("Form")="org.racket.lang.core.stubs.StubImplementationsKt.factory"
+}
+
+RacketFile ::= HASH_LANG Item* | ToplevelModule
+
+ToplevelModule ::=
+  OPEN_PAREN 'module' ModuleName ModulePath Item* CLOSE_PAREN
+
+private ModuleName ::=
+  IDENTIFIER
+
+ModulePath ::=
+  IDENTIFIER
+  | STRING
+
+private Item ::=
+  Form
+  | COMMENT
+  | SEXP_COMMENT
+  | CRLF
+
+Form ::=
+  Datum
+  | DOT
+  | CHARACTER
+  | NUMBER
+  | BOOLEAN
+  | STRING
+  | IDENTIFIER
+  | KEYWORD
+  | OPEN_PAREN Item* CLOSE_PAREN
+  | OPEN_SQUARE Item* CLOSE_SQUARE
+  // | OPEN_BRACE Item* CLOSE_BRACE
+
+Datum ::=
+  CONSTANT Form
+  | UNQUOTE Form

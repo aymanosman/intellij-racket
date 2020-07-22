@@ -1,0 +1,8 @@
+Racket(0,18)
+  PsiElement(RacketTokenType.HASH_LANG)('#lang racket')(0,12)
+  PsiWhiteSpace('\n\n')(12,14)
+  RacketFormImpl(FORM)(14,18)
+    RacketDatumImpl(DATUM)(14,18)
+      PsiElement(RacketTokenType.CONSTANT)(''')(14,15)
+      RacketFormImpl(FORM)(15,18)
+        PsiElement(RacketTokenType.IDENTIFIER)('top')(15,18)
