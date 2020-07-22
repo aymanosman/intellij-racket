@@ -1,4 +1,4 @@
-package com.github.aymanosman.intellijracket
+package org.racket
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls

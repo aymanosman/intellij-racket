@@ -1,19 +1,20 @@
 <idea-plugin>
-    <id>com.github.aymanosman.intellijracket</id>
-    <name>intellij-racket</name>
-    <vendor>aymanosman</vendor>
+    <id>org.racket.lang</id>
+    <name>Racket</name>
+    <vendor url="https://github.com/aymanosman">Ayman Osman</vendor>
+
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.aymanosman.intellijracket.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.aymanosman.intellijracket.services.MyProjectService"/>
+        <applicationService serviceImplementation="org.racket.services.MyApplicationService"/>
+        <projectService serviceImplementation="org.racket.services.MyProjectService"/>
     </extensions>
 
     <projectListeners>
-        <listener class="com.github.aymanosman.intellijracket.listeners.MyProjectManagerListener"
+        <listener class="org.racket.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </projectListeners>
 </idea-plugin>

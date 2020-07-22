@@ -1,8 +1,8 @@
-package com.github.aymanosman.intellijracket.listeners
+package org.racket.listeners
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import com.github.aymanosman.intellijracket.services.MyProjectService
+import org.racket.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 

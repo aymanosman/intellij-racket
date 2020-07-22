@@ -1,6 +1,6 @@
-package com.github.aymanosman.intellijracket.services
+package org.racket.services
 
-import com.github.aymanosman.intellijracket.MyBundle
+import org.racket.MyBundle
 
 class MyApplicationService {
 

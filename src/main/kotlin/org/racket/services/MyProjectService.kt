@@ -1,7 +1,7 @@
-package com.github.aymanosman.intellijracket.services
+package org.racket.services
 
 import com.intellij.openapi.project.Project
-import com.github.aymanosman.intellijracket.MyBundle
+import org.racket.MyBundle
 
 class MyProjectService(project: Project) {
 
