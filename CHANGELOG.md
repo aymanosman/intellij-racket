@@ -2,6 +2,8 @@
 
 # intellij-racket Changelog
 
+## [Unreleased]
+
 ## [0.0.2-beta] - 2020-07-22
 ### Added
 - Minimal language support, including syntax highlighting
