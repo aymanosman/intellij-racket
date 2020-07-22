@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.0.2-beta]
+### Added
 - Minimal language support, including syntax highlighting
 
 ## [0.0.1-beta] - 2020-07-22
