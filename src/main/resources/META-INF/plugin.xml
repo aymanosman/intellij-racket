@@ -3,16 +3,6 @@
     <name>Racket</name>
     <vendor url="https://github.com/aymanosman">Ayman Osman</vendor>
 
-    <description><![CDATA[
-     Provides support for the <a href="https://racket-lang.org/">Racket</a> programming language.<br>
-
-     Features:<br>
-      <ul>
-          <li>Syntax Highlighting</li>
-      </ul>
-    ]]></description>
-
-
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
