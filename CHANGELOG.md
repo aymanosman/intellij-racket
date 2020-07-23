@@ -4,16 +4,8 @@
 
 ## [Unreleased]
 ### Added
+- Racket logo
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.2-beta]
 ### Added
 - Minimal language support, including syntax highlighting
