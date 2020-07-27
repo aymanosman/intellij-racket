@@ -4,16 +4,9 @@
 
 ## [Unreleased]
 ### Added
+- First public release
+- Minimal language support, including syntax highlighting
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.4-beta]
 ### Added
 - Description to plugin.xml
