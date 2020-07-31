@@ -4,16 +4,8 @@
 
 ## [Unreleased]
 ### Added
+- Support IntelliJ 2020.2
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.4]
 ### Added
 - First public release
