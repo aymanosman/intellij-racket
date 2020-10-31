@@ -162,34 +162,13 @@ public class RacketParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // IDENTIFIER
-  static boolean ModuleName(PsiBuilder builder_, int level_) {
-    return consumeToken(builder_, IDENTIFIER);
-  }
-
-  /* ********************************************************** */
-  // IDENTIFIER
-  //   | STRING
-  public static boolean ModulePath(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "ModulePath")) return false;
-    if (!nextTokenIs(builder_, "<module path>", IDENTIFIER, STRING)) return false;
-    boolean result_;
-    Marker marker_ = enter_section_(builder_, level_, _NONE_, MODULE_PATH, "<module path>");
-    result_ = consumeToken(builder_, IDENTIFIER);
-    if (!result_) result_ = consumeToken(builder_, STRING);
-    exit_section_(builder_, level_, marker_, result_, false, null);
-    return result_;
-  }
-
-  /* ********************************************************** */
-  // HASH_LANG Item* | ToplevelModule
+  // HASH_LANG Item* | Item*
   static boolean RacketFile(PsiBuilder builder_, int level_) {
     if (!recursion_guard_(builder_, level_, "RacketFile")) return false;
-    if (!nextTokenIs(builder_, "", HASH_LANG, OPEN_PAREN)) return false;
     boolean result_;
     Marker marker_ = enter_section_(builder_);
     result_ = RacketFile_0(builder_, level_ + 1);
-    if (!result_) result_ = ToplevelModule(builder_, level_ + 1);
+    if (!result_) result_ = RacketFile_1(builder_, level_ + 1);
     exit_section_(builder_, marker_, null, result_);
     return result_;
   }
@@ -216,30 +195,13 @@ public class RacketParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  /* ********************************************************** */
-  // OPEN_PAREN 'module' ModuleName ModulePath Item* CLOSE_PAREN
-  public static boolean ToplevelModule(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "ToplevelModule")) return false;
-    if (!nextTokenIs(builder_, OPEN_PAREN)) return false;
-    boolean result_;
-    Marker marker_ = enter_section_(builder_);
-    result_ = consumeToken(builder_, OPEN_PAREN);
-    result_ = result_ && consumeToken(builder_, "module");
-    result_ = result_ && ModuleName(builder_, level_ + 1);
-    result_ = result_ && ModulePath(builder_, level_ + 1);
-    result_ = result_ && ToplevelModule_4(builder_, level_ + 1);
-    result_ = result_ && consumeToken(builder_, CLOSE_PAREN);
-    exit_section_(builder_, marker_, TOPLEVEL_MODULE, result_);
-    return result_;
-  }
-
   // Item*
-  private static boolean ToplevelModule_4(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "ToplevelModule_4")) return false;
+  private static boolean RacketFile_1(PsiBuilder builder_, int level_) {
+    if (!recursion_guard_(builder_, level_, "RacketFile_1")) return false;
     while (true) {
       int pos_ = current_position_(builder_);
       if (!Item(builder_, level_ + 1)) break;
-      if (!empty_element_parsed_guard_(builder_, "ToplevelModule_4", pos_)) break;
+      if (!empty_element_parsed_guard_(builder_, "RacketFile_1", pos_)) break;
     }
     return true;
   }

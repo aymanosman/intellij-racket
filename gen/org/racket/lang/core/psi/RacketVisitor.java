@@ -14,14 +14,6 @@ public class RacketVisitor extends PsiElementVisitor {
     visitElement(o);
   }
 
-  public void visitModulePath(@NotNull RacketModulePath o) {
-    visitElement(o);
-  }
-
-  public void visitToplevelModule(@NotNull RacketToplevelModule o) {
-    visitElement(o);
-  }
-
   public void visitElement(@NotNull RacketElement o) {
     super.visitElement(o);
   }

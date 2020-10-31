@@ -11,8 +11,6 @@ public interface RacketElementTypes {
 
   IElementType DATUM = new RacketElementType("DATUM");
   IElementType FORM = StubImplementationsKt.factory("FORM");
-  IElementType MODULE_PATH = new RacketElementType("MODULE_PATH");
-  IElementType TOPLEVEL_MODULE = new RacketElementType("TOPLEVEL_MODULE");
 
   IElementType BOOLEAN = new RacketTokenType("BOOLEAN");
   IElementType CHARACTER = new RacketTokenType("CHARACTER");
@@ -40,12 +38,6 @@ public interface RacketElementTypes {
       }
       else if (type == FORM) {
         return new RacketFormImpl(node);
-      }
-      else if (type == MODULE_PATH) {
-        return new RacketModulePathImpl(node);
-      }
-      else if (type == TOPLEVEL_MODULE) {
-        return new RacketToplevelModuleImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

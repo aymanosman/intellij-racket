@@ -18,17 +18,7 @@
   elementTypeFactory("Form")="org.racket.lang.core.stubs.StubImplementationsKt.factory"
 }
 
-RacketFile ::= HASH_LANG Item* | ToplevelModule
-
-ToplevelModule ::=
-  OPEN_PAREN 'module' ModuleName ModulePath Item* CLOSE_PAREN
-
-private ModuleName ::=
-  IDENTIFIER
-
-ModulePath ::=
-  IDENTIFIER
-  | STRING
+RacketFile ::= HASH_LANG Item* | Item*
 
 private Item ::=
   Form
