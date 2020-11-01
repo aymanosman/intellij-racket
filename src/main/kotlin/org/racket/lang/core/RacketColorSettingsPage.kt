@@ -48,6 +48,7 @@ class RacketColorSettingsPage : ColorSettingsPage {
                 AttributesDescriptor("Keyword", RacketSyntaxHighlighter.KEYWORD),
                 AttributesDescriptor("Comment", RacketSyntaxHighlighter.COMMENT),
                 AttributesDescriptor("String", RacketSyntaxHighlighter.STRING),
+                AttributesDescriptor("Here String", RacketSyntaxHighlighter.HERE_STRING),
                 AttributesDescriptor("Constant", RacketSyntaxHighlighter.CONSTANT),
                 AttributesDescriptor("Unquote", RacketSyntaxHighlighter.UNQUOTE),
                 AttributesDescriptor("Number", RacketSyntaxHighlighter.NUMBER),

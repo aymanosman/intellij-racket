@@ -21,6 +21,8 @@ class RacketSyntaxHighlighter : SyntaxHighlighterBase() {
                     KEYWORD_KEYS
                 RacketElementTypes.STRING ->
                     STRING_KEYS
+                RacketElementTypes.HERE_STRING ->
+                    STRING_KEYS
                 RacketElementTypes.CONSTANT ->
                     CONSTANT_KEYS
                 RacketElementTypes.UNQUOTE ->
@@ -47,6 +49,7 @@ class RacketSyntaxHighlighter : SyntaxHighlighterBase() {
         val IDENTIFIER = TextAttributesKey.createTextAttributesKey("RACKET_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER)
         val KEYWORD = TextAttributesKey.createTextAttributesKey("RACKET_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD)
         val STRING = TextAttributesKey.createTextAttributesKey("RACKET_STRING", DefaultLanguageHighlighterColors.STRING)
+        val HERE_STRING = TextAttributesKey.createTextAttributesKey("RACKET_HERE_STRING", DefaultLanguageHighlighterColors.STRING)
         val CONSTANT = TextAttributesKey.createTextAttributesKey("RACKET_CONSTANT", DefaultLanguageHighlighterColors.CONSTANT)
         val UNQUOTE = TextAttributesKey.createTextAttributesKey("RACKET_UNQUOTE", DefaultLanguageHighlighterColors.CONSTANT)
         val NUMBER = TextAttributesKey.createTextAttributesKey("RACKET_NUMBER", DefaultLanguageHighlighterColors.NUMBER)

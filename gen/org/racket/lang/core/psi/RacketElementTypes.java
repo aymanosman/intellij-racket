@@ -21,6 +21,7 @@ public interface RacketElementTypes {
   IElementType CRLF = new RacketTokenType("CRLF");
   IElementType DOT = new RacketTokenType("DOT");
   IElementType HASH_LANG = new RacketTokenType("HASH_LANG");
+  IElementType HERE_STRING = new RacketTokenType("HERE_STRING");
   IElementType IDENTIFIER = new RacketTokenType("IDENTIFIER");
   IElementType KEYWORD = new RacketTokenType("KEYWORD");
   IElementType NUMBER = new RacketTokenType("NUMBER");

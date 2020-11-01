@@ -145,6 +145,7 @@ unquote=","|",@"|"#,"|"#,@"
 
 // ---
 block_comment="#|" ~"|#"
+here_string="#<<EOF\n" ~"\nEOF"
 
 %state MAIN
 
@@ -174,6 +175,7 @@ block_comment="#|" ~"|#"
 
  {keyword} { return RacketElementTypes.KEYWORD; }
  {str} { return RacketElementTypes.STRING; }
+ {here_string} { return RacketElementTypes.HERE_STRING; }
  {line_comment} { return RacketElementTypes.COMMENT; }
  {sexp_comment} { return RacketElementTypes.SEXP_COMMENT; }
  {block_comment} { return RacketElementTypes.COMMENT; }
@@ -190,7 +192,6 @@ block_comment="#|" ~"|#"
  {unquote} { return RacketElementTypes.UNQUOTE; }
 
  {identifier}  { return RacketElementTypes.IDENTIFIER; }
- // #<<
 
  {CRLF}({CRLF}|{WHITE_SPACE})+ { return TokenType.WHITE_SPACE; }
 }

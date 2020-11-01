@@ -60,6 +60,10 @@ class RacketParsingTest : ParsingTestCase("", "rkt", RacketParserDefinition()) {
         doTest(true)
     }
 
+    fun testParsingHereStrings() {
+        doTest(true)
+    }
+
     fun testParsingToplevelModuleForm() {
         doTest(true)
     }
