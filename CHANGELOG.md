@@ -4,16 +4,12 @@
 
 ## [Unreleased]
 ### Added
+- Make plugin available on all IntelliJ products
+- Support limited 'here strings' (only delimited by #<<EOF ... EOF)
 
 ### Changed
+- Made lexer and parser slightly more lenient
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.5]
 ### Added
 - Support IntelliJ 2020.2
