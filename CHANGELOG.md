@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.0.6]
+### Added
 - Make plugin available on all IntelliJ products
 - Support limited 'here strings' (only delimited by #<<EOF ... EOF)
 
