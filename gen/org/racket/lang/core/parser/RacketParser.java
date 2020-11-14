@@ -83,6 +83,7 @@ public class RacketParser implements PsiParser, LightPsiParser {
   //   | KEYWORD
   //   | OPEN_PAREN Item* CLOSE_PAREN
   //   | OPEN_SQUARE Item* CLOSE_SQUARE
+  //   | OPEN_BRACE Item* CLOSE_BRACE
   public static boolean Form(PsiBuilder builder_, int level_) {
     if (!recursion_guard_(builder_, level_, "Form")) return false;
     boolean result_;
@@ -98,6 +99,7 @@ public class RacketParser implements PsiParser, LightPsiParser {
     if (!result_) result_ = consumeToken(builder_, KEYWORD);
     if (!result_) result_ = Form_9(builder_, level_ + 1);
     if (!result_) result_ = Form_10(builder_, level_ + 1);
+    if (!result_) result_ = Form_11(builder_, level_ + 1);
     exit_section_(builder_, level_, marker_, result_, false, null);
     return result_;
   }
@@ -144,6 +146,29 @@ public class RacketParser implements PsiParser, LightPsiParser {
       int pos_ = current_position_(builder_);
       if (!Item(builder_, level_ + 1)) break;
       if (!empty_element_parsed_guard_(builder_, "Form_10_1", pos_)) break;
+    }
+    return true;
+  }
+
+  // OPEN_BRACE Item* CLOSE_BRACE
+  private static boolean Form_11(PsiBuilder builder_, int level_) {
+    if (!recursion_guard_(builder_, level_, "Form_11")) return false;
+    boolean result_;
+    Marker marker_ = enter_section_(builder_);
+    result_ = consumeToken(builder_, OPEN_BRACE);
+    result_ = result_ && Form_11_1(builder_, level_ + 1);
+    result_ = result_ && consumeToken(builder_, CLOSE_BRACE);
+    exit_section_(builder_, marker_, null, result_);
+    return result_;
+  }
+
+  // Item*
+  private static boolean Form_11_1(PsiBuilder builder_, int level_) {
+    if (!recursion_guard_(builder_, level_, "Form_11_1")) return false;
+    while (true) {
+      int pos_ = current_position_(builder_);
+      if (!Item(builder_, level_ + 1)) break;
+      if (!empty_element_parsed_guard_(builder_, "Form_11_1", pos_)) break;
     }
     return true;
   }

@@ -14,6 +14,7 @@ public interface RacketElementTypes {
 
   IElementType BOOLEAN = new RacketTokenType("BOOLEAN");
   IElementType CHARACTER = new RacketTokenType("CHARACTER");
+  IElementType CLOSE_BRACE = new RacketTokenType("CLOSE_BRACE");
   IElementType CLOSE_PAREN = new RacketTokenType("CLOSE_PAREN");
   IElementType CLOSE_SQUARE = new RacketTokenType("CLOSE_SQUARE");
   IElementType COMMENT = new RacketTokenType("COMMENT");
@@ -25,6 +26,7 @@ public interface RacketElementTypes {
   IElementType IDENTIFIER = new RacketTokenType("IDENTIFIER");
   IElementType KEYWORD = new RacketTokenType("KEYWORD");
   IElementType NUMBER = new RacketTokenType("NUMBER");
+  IElementType OPEN_BRACE = new RacketTokenType("OPEN_BRACE");
   IElementType OPEN_PAREN = new RacketTokenType("OPEN_PAREN");
   IElementType OPEN_SQUARE = new RacketTokenType("OPEN_SQUARE");
   IElementType SEXP_COMMENT = new RacketTokenType("SEXP_COMMENT");

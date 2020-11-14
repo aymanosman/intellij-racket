@@ -72,6 +72,10 @@ class RacketParsingTest : ParsingTestCase("", "rkt", RacketParserDefinition()) {
         doTest(true)
     }
 
+    fun testParsingBraces() {
+        doTest(true)
+    }
+
     override fun getTestDataPath(): String {
         return "src/test/testData"
     }

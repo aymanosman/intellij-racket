@@ -186,6 +186,8 @@ here_string="#<<EOF\n" ~"\nEOF"
  ")" { return RacketElementTypes.CLOSE_PAREN; }
  {list_prefix} "[" { return RacketElementTypes.OPEN_SQUARE; }
  "]" { return RacketElementTypes.CLOSE_SQUARE; }
+ {list_prefix} "{" { return RacketElementTypes.OPEN_BRACE; }
+ "}" { return RacketElementTypes.CLOSE_BRACE; }
 
  {constant}  { return RacketElementTypes.CONSTANT; }
  {dot} { return RacketElementTypes.DOT; }
