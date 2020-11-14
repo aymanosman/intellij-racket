@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 ### Added
+- Support parsing braces '{' '}'
 
 ### Changed
 
