@@ -7,15 +7,6 @@
 - Support parsing braces '{' '}'
 - Support parsing real, rational, signed, inexact and exact numbers  
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.6]
 ### Added
 - Make plugin available on all IntelliJ products
