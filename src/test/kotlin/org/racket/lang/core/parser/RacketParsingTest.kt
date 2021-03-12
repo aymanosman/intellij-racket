@@ -44,6 +44,18 @@ class RacketParsingTest : ParsingTestCase("", "rkt", RacketParserDefinition()) {
         doTest(true)
     }
 
+    fun testParsingRationalNumbers() {
+        doTest(true)
+    }
+
+    fun testParsingRealNumbers() {
+        doTest(true)
+    }
+
+    fun testParsingInexactNumbers() {
+        doTest(true)
+    }
+
     fun testParsingBooleans() {
         doTest(true)
     }

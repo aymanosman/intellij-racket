@@ -134,11 +134,22 @@ line_comment=";".*
 langline=("#lang " | "#!") ({langchar} | ({langchar} ({langchar} | "/")* {langchar}))
 constant="'" | "`" | "#'" | "#`" | "#&"
 booleans=("#true"|"#false"|"#t"|"#f"|"#T"|"#F") [^\",'`()\[\]{};\\|\ \n\r\t\f]*
-numbers = {digit10}*
-        | {radix16} {digit16}*
-        | {radix2} {digit2}*
+number = {exactness}? {_number}
+_number = {sign}? {number10}
+        | {radix16} {sign}? {number16}
+        | {radix2} {sign}? {number2}
         | "+" {special_numbers}
         | "-" {special_numbers}
+number10 = {digit10}+
+         | {digit10}+ "/" {digit10}+
+         | {digit10}+ "." {digit10}+
+number2 = {digit2}+
+        | {digit2}+ "/" {digit2}+
+        | {digit2}+ "." {digit2}+
+number16 = {digit16}+
+         | {digit16}+ "/" {digit16}+
+         | {digit16}+ "." {digit16}+
+
 sexp_comment="#;"
 dot="."
 unquote=","|",@"|"#,"|"#,@"
@@ -171,7 +182,7 @@ here_string="#<<EOF\n" ~"\nEOF"
           }
       }
  {character} { return RacketElementTypes.CHARACTER; }
- {numbers} { return RacketElementTypes.NUMBER; }
+ {number} { return RacketElementTypes.NUMBER; }
 
  {keyword} { return RacketElementTypes.KEYWORD; }
  {str} { return RacketElementTypes.STRING; }

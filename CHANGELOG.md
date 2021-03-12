@@ -5,6 +5,7 @@
 ## [Unreleased]
 ### Added
 - Support parsing braces '{' '}'
+- Support parsing real, rational, signed, inexact and exact numbers  
 
 ### Changed
 
