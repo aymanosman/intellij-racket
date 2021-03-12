@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [0.0.7]
+### Added
 - Support parsing braces '{' '}'
 - Support parsing real, rational, signed, inexact and exact numbers  
 
