@@ -31,6 +31,18 @@
         <annotator language="Racket"
                    implementationClass="org.racket.ide.highlight.RacketSyntaxHighlightAnnotator"/>
 
+        <!-- inspection  -->
+
+        <globalInspection language="Racket"
+                          shortName="UNUSED_REQUIRES"
+                          bundle="messages.MyBundle"
+                          groupPath="Racket"
+                          groupKey="group.names.require"
+                          key="unused.requires.display.name"
+                          enabledByDefault="true"
+                          level="WARNING"
+                          implementationClass="org.racket.ide.codeInspection.UnusedRequiresInspection"/>
+
         <!-- commenter -->
 
         <lang.commenter language="Racket" implementationClass="org.racket.ide.commenter.RacketCommenter"/>
@@ -38,6 +50,14 @@
         <!-- color settings -->
 
         <colorSettingsPage implementation="org.racket.lang.core.RacketColorSettingsPage"/>
+
+        <!-- settings -->
+
+        <applicationConfigurable groupId="language"
+                                 displayName="Racket"
+                                 id="org.racket.ide.settings.RacketSettingsConfigurable"
+                                 instance="org.racket.ide.settings.RacketSettingsConfigurable"/>
+        <applicationService serviceImplementation="org.racket.ide.settings.RacketSettings"/>
 
     </extensions>
 

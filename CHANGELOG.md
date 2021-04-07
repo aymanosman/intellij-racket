@@ -4,16 +4,8 @@
 
 ## [Unreleased]
 ### Added
+- Unused requires inspection
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [0.0.7]
 ### Added
 - Support parsing braces '{' '}'
