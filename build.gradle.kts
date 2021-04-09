@@ -5,6 +5,8 @@ import org.jetbrains.grammarkit.tasks.GenerateLexer
 import org.jetbrains.grammarkit.tasks.GenerateParser
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+fun properties(key: String) = project.findProperty(key).toString()
+
 plugins {
     // Java support
     id("java")
@@ -13,7 +15,7 @@ plugins {
     // Grammar Kit
     id("org.jetbrains.grammarkit") version "2020.2.1"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "0.4.21"
+    id("org.jetbrains.intellij") version "0.7.2"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
     id("org.jetbrains.changelog") version "0.4.0"
     // detekt linter - read more: https://detekt.github.io/detekt/kotlindsl.html
@@ -113,6 +115,10 @@ tasks {
         changeNotes(closure {
             changelog.getLatest().toHTML()
         })
+    }
+
+    runPluginVerifier {
+        ideVersions(properties("pluginVerifierIdeVersions"))
     }
 
     publishPlugin {
