@@ -8,7 +8,6 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="org.racket.services.MyApplicationService"/>
         <projectService serviceImplementation="org.racket.services.MyProjectService"/>
 
         <!-- file-type factory -->
