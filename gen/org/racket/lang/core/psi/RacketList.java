@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface RacketForm extends RacketElement {
-
-  @Nullable
-  RacketDatum getDatum();
+public interface RacketList extends RacketElement {
 
   @NotNull
-  List<RacketForm> getFormList();
+  List<RacketDatum> getDatumList();
+
+  @NotNull
+  List<RacketList> getListList();
 
 }

@@ -27,9 +27,15 @@ public class RacketDatumImpl extends ASTWrapperPsiElement implements RacketDatum
   }
 
   @Override
-  @NotNull
-  public RacketForm getForm() {
-    return findNotNullChildByClass(RacketForm.class);
+  @Nullable
+  public RacketDatum getDatum() {
+    return findChildByClass(RacketDatum.class);
+  }
+
+  @Override
+  @Nullable
+  public RacketList getList() {
+    return findChildByClass(RacketList.class);
   }
 
 }

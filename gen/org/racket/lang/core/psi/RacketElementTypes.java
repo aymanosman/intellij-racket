@@ -4,13 +4,12 @@ package org.racket.lang.core.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
-import org.racket.lang.core.stubs.StubImplementationsKt;
 import org.racket.lang.core.psi.impl.*;
 
 public interface RacketElementTypes {
 
   IElementType DATUM = new RacketElementType("DATUM");
-  IElementType FORM = StubImplementationsKt.factory("FORM");
+  IElementType LIST = new RacketElementType("LIST");
 
   IElementType BOOLEAN = new RacketTokenType("BOOLEAN");
   IElementType CHARACTER = new RacketTokenType("CHARACTER");
@@ -39,8 +38,8 @@ public interface RacketElementTypes {
       if (type == DATUM) {
         return new RacketDatumImpl(node);
       }
-      else if (type == FORM) {
-        return new RacketFormImpl(node);
+      else if (type == LIST) {
+        return new RacketListImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

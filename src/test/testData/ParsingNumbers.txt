@@ -1,5 +1,4 @@
 Racket(0,16)
   PsiElement(RacketTokenType.HASH_LANG)('#lang racket')(0,12)
   PsiWhiteSpace('\n\n')(12,14)
-  RacketFormImpl(FORM)(14,16)
-    PsiElement(RacketTokenType.NUMBER)('42')(14,16)
+  PsiElement(RacketTokenType.NUMBER)('42')(14,16)

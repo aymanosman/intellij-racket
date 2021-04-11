@@ -11,14 +11,14 @@ import static org.racket.lang.core.psi.RacketElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import org.racket.lang.core.psi.*;
 
-public class RacketFormImpl extends ASTWrapperPsiElement implements RacketForm {
+public class RacketListImpl extends ASTWrapperPsiElement implements RacketList {
 
-  public RacketFormImpl(@NotNull ASTNode node) {
+  public RacketListImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull RacketVisitor visitor) {
-    visitor.visitForm(this);
+    visitor.visitList(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,15 +27,15 @@ public class RacketFormImpl extends ASTWrapperPsiElement implements RacketForm {
   }
 
   @Override
-  @Nullable
-  public RacketDatum getDatum() {
-    return findChildByClass(RacketDatum.class);
+  @NotNull
+  public List<RacketDatum> getDatumList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, RacketDatum.class);
   }
 
   @Override
   @NotNull
-  public List<RacketForm> getFormList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, RacketForm.class);
+  public List<RacketList> getListList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, RacketList.class);
   }
 
 }

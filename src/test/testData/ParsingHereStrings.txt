@@ -1,5 +1,4 @@
 Racket(0,37)
   PsiElement(RacketTokenType.HASH_LANG)('#lang racket')(0,12)
   PsiWhiteSpace('\n\n')(12,14)
-  RacketFormImpl(FORM)(14,37)
-    PsiElement(RacketTokenType.HERE_STRING)('#<<EOF\nhere is\n doc\nEOF')(14,37)
+  PsiElement(RacketTokenType.HERE_STRING)('#<<EOF\nhere is\n doc\nEOF')(14,37)

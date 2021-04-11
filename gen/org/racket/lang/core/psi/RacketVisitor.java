@@ -10,7 +10,7 @@ public class RacketVisitor extends PsiElementVisitor {
     visitElement(o);
   }
 
-  public void visitForm(@NotNull RacketForm o) {
+  public void visitList(@NotNull RacketList o) {
     visitElement(o);
   }
 

@@ -14,8 +14,6 @@
   tokenTypeClass="org.racket.lang.core.psi.RacketTokenType"
 
   psiImplUtilClass="org.racket.lang.core.psi.impl.RacketPsiImplUtil"
-
-  elementTypeFactory("Form")="org.racket.lang.core.stubs.StubImplementationsKt.factory"
 }
 
 RacketFile ::= HASH_LANG Item* | Item*
@@ -26,7 +24,7 @@ private Item ::=
   | SEXP_COMMENT
   | CRLF
 
-Form ::=
+private Form ::=
   Datum
   | DOT
   | CHARACTER
@@ -36,7 +34,10 @@ Form ::=
   | HERE_STRING
   | IDENTIFIER
   | KEYWORD
-  | OPEN_PAREN Item* CLOSE_PAREN
+  | List
+
+List ::=
+  OPEN_PAREN Item* CLOSE_PAREN
   | OPEN_SQUARE Item* CLOSE_SQUARE
   | OPEN_BRACE Item* CLOSE_BRACE
 

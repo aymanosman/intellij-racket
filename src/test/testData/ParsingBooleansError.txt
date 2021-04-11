@@ -1,5 +1,5 @@
 Racket(0,20)
   PsiElement(RacketTokenType.HASH_LANG)('#lang racket')(0,12)
   PsiWhiteSpace('\n\n')(12,14)
-  PsiErrorElement:<form>, RacketTokenType.COMMENT, RacketTokenType.CRLF or RacketTokenType.SEXP_COMMENT expected, got '#flase'(14,20)
+  PsiErrorElement:<datum>, <list>, RacketTokenType.BOOLEAN, RacketTokenType.CHARACTER, RacketTokenType.COMMENT, RacketTokenType.CRLF, RacketTokenType.DOT, RacketTokenType.HERE_STRING, RacketTokenType.IDENTIFIER, RacketTokenType.KEYWORD, RacketTokenType.NUMBER, RacketTokenType.SEXP_COMMENT or RacketTokenType.STRING expected, got '#flase'(14,20)
     PsiElement(ERROR_ELEMENT)('#flase')(14,20)

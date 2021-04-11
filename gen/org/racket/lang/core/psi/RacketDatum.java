@@ -7,7 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface RacketDatum extends RacketElement {
 
-  @NotNull
-  RacketForm getForm();
+  @Nullable
+  RacketDatum getDatum();
+
+  @Nullable
+  RacketList getList();
 
 }
