@@ -45,7 +45,7 @@
                           key="unused.requires.display.name"
                           enabledByDefault="true"
                           level="WARNING"
-                          implementationClass="org.racket.ide.codeInspection.UnusedRequiresInspection"/>
+                          implementationClass="org.racket.ide.inspections.UnusedRequiresInspection"/>
 
         <!-- commenter -->
 

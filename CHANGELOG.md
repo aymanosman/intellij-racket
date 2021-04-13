@@ -6,6 +6,9 @@
 ### Added
 - Brace matcher
 
+### Fixed
+- Inspection description for `unused requires`
+
 ## [0.0.8]
 ### Added
 - Unused requires inspection

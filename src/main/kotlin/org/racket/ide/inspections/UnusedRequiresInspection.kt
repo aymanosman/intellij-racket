@@ -1,4 +1,4 @@
-package org.racket.ide.codeInspection
+package org.racket.ide.inspections
 
 import com.intellij.codeInspection.*
 import com.intellij.execution.ExecutionException
