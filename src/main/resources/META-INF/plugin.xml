@@ -30,6 +30,11 @@
         <annotator language="Racket"
                    implementationClass="org.racket.ide.highlight.RacketSyntaxHighlightAnnotator"/>
 
+        <!-- brace matcher -->
+
+        <lang.braceMatcher language="Racket"
+                           implementationClass="org.racket.ide.formatter.RacketBraceMatcher" />
+
         <!-- inspection  -->
 
         <globalInspection language="Racket"
