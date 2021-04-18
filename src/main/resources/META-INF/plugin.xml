@@ -30,22 +30,42 @@
         <annotator language="Racket"
                    implementationClass="org.racket.ide.highlight.RacketSyntaxHighlightAnnotator"/>
 
+        <externalAnnotator language="Racket"
+                           implementationClass="org.racket.ide.annotator.UnusedRequiresAnnotator"/>
+
+        <externalAnnotator language="Racket"
+                           implementationClass="org.racket.ide.annotator.LintWithExpandAnnotator"/>
+
+
         <!-- brace matcher -->
 
         <lang.braceMatcher language="Racket"
-                           implementationClass="org.racket.ide.formatter.RacketBraceMatcher" />
+                           implementationClass="org.racket.ide.formatter.RacketBraceMatcher"/>
 
         <!-- inspection  -->
 
-        <globalInspection language="Racket"
-                          shortName="UNUSED_REQUIRES"
-                          bundle="messages.MyBundle"
-                          groupPath="Racket"
-                          groupKey="group.names.require"
-                          key="unused.requires.display.name"
-                          enabledByDefault="true"
-                          level="WARNING"
-                          implementationClass="org.racket.ide.inspections.UnusedRequiresInspection"/>
+        <localInspection language="Racket"
+                         id="LINT_WITH_EXPAND"
+                         shortName="LINT_WITH_EXPAND"
+                         bundle="messages.MyBundle"
+                         groupPath="Racket"
+                         groupKey="group.names.lint"
+                         key="lint.with.expand.display.name"
+                         enabledByDefault="true"
+                         level="ERROR"
+                         unfair="true"
+                         implementationClass="org.racket.ide.inspections.LintWithExpandInspection"/>
+
+        <localInspection language="Racket"
+                         id="UNUSED_REQUIRES"
+                         shortName="UNUSED_REQUIRES"
+                         bundle="messages.MyBundle"
+                         groupPath="Racket"
+                         groupKey="group.names.unused.requires"
+                         key="unused.requires.display.name"
+                         enabledByDefault="true"
+                         level="WARNING"
+                         implementationClass="org.racket.ide.inspections.UnusedRequiresInspection"/>
 
         <!-- commenter -->
 
