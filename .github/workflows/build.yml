@@ -15,7 +15,6 @@
 
 name: Build
 on: [push, pull_request]
-
 jobs:
 
   # Run Gradle Wrapper Validation Action to verify the wrapper's checksum
@@ -30,7 +29,7 @@ jobs:
 
       # Validate wrapper
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v1.0.3
 
   # Run verifyPlugin and test Gradle tasks
   test:
@@ -39,35 +38,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      # Setup Java 1.8 environment for the next steps
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 8
+
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v2
 
-      # Setup Java 1.8 environment for the next steps
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-
       # Cache Gradle dependencies
-      - name: Setup Cache
-        uses: actions/cache@v1
+      - name: Setup Gradle Dependencies Cache
+        uses: actions/cache@v2.1.4
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle-
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts', 'gradle.properties') }}
 
-#      # Run detekt
-#      - name: Run Linters
-#        run: ./gradlew check
+      # Cache Gradle Wrapper
+      - name: Setup Gradle Wrapper Cache
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+
+      # Run detekt, ktlint and tests
+      - name: Run Linters and Test
+        run: ./gradlew check
 
       # Run verifyPlugin Gradle task
       - name: Verify Plugin
         run: ./gradlew verifyPlugin
-
-      # Run test Gradle task
-      - name: Run Tests
-        run: ./gradlew test
 
   # Build plugin with buildPlugin Gradle task and provide the artifact for the next workflow jobs
   # Requires test job to be passed
@@ -78,40 +80,53 @@ jobs:
     outputs:
       name: ${{ steps.properties.outputs.name }}
       version: ${{ steps.properties.outputs.version }}
-      artifact: ${{ steps.properties.outputs.name }}-${{ steps.properties.outputs.version }}.zip
       changelog: ${{ steps.properties.outputs.changelog }}
+      artifact: ${{ steps.properties.outputs.artifact }}
     steps:
+
+      # Setup Java 1.8 environment for the next steps
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 8
 
       # Check out current repository
       - name: Fetch Sources
         uses: actions/checkout@v2
 
-      # Setup Java 1.8 environment for the next steps
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-
-      # Cache Gradle dependencies
-      - name: Setup Cache
-        uses: actions/cache@v1
+      # Cache Gradle Dependencies
+      - name: Setup Gradle Dependencies Cache
+        uses: actions/cache@v2.1.4
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-gradle-
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts', 'gradle.properties') }}
+
+      # Cache Gradle Wrapper
+      - name: Setup Gradle Wrapper Cache
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
 
       # Set environment variables
       - name: Export Properties
         id: properties
+        shell: bash
         run: |
-          echo "::set-output name=version::$(./gradlew properties --console=plain -q | grep "^version:" | cut -f2- -d ' ')"
-          echo "::set-output name=name::$(./gradlew properties --console=plain -q | grep "^name:" | cut -f2- -d ' ')"
-
-          CHANGELOG=$(./gradlew getChangelog --unreleased --no-header --console=plain -q)
+          PROPERTIES="$(./gradlew properties --console=plain -q)"
+          VERSION="$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')"
+          NAME="$(echo "$PROPERTIES" | grep "^pluginName:" | cut -f2- -d ' ')"
+          CHANGELOG="$(./gradlew getChangelog --unreleased --no-header --console=plain -q)"
           CHANGELOG="${CHANGELOG//'%'/'%25'}"
           CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
           CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
+          ARTIFACT="${NAME}-${VERSION}.zip"
+
+          echo "::set-output name=version::$VERSION"
+          echo "::set-output name=name::$NAME"
           echo "::set-output name=changelog::$CHANGELOG"
+          echo "::set-output name=artifact::$ARTIFACT"
 
       # Build artifact using buildPlugin Gradle task
       - name: Build Plugin
@@ -119,10 +134,10 @@ jobs:
 
       # Upload plugin artifact to make it available in the next jobs
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: plugin-artifact
-          path: ./build/distributions/${{ needs.build.outputs.artifact }}
+          path: ./build/distributions/${{ steps.properties.outputs.artifact }}
 
   # Verify built plugin using IntelliJ Plugin Verifier tool
   # Requires build job to be passed
@@ -183,7 +198,7 @@ jobs:
   # If accepted and published, release workflow would be triggered
   releaseDraft:
     name: Release Draft
-    if: github.ref == 'refs/heads/master'
+    if: github.event_name != 'pull_request'
     needs: [build, verify]
     runs-on: ubuntu-latest
     steps:
@@ -217,7 +232,7 @@ jobs:
 
       # Download plugin artifact provided by the previous job
       - name: Download Artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: plugin-artifact
 
@@ -229,6 +244,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.createDraft.outputs.upload_url }}
-          asset_path: ./plugin-artifact/${{ needs.build.outputs.artifact }}
+          asset_path: ./${{ needs.build.outputs.artifact }}
           asset_name: ${{ needs.build.outputs.artifact }}
           asset_content_type: application/zip
