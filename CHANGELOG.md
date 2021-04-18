@@ -4,6 +4,7 @@
 # intellij-racket Changelog
 
 ## [Unreleased]
+## [0.0.10]
 ### Added
 - Added "lint with expand" local inspection
 
