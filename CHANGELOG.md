@@ -1,17 +1,14 @@
+
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
 # intellij-racket Changelog
 
 ## [Unreleased]
 ### Added
+- Added "lint with expand" local inspection
 
 ### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
+- Made "unused requires" a local inspection
 
 ### Security
 ## [0.0.9]
