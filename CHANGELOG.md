@@ -3,6 +3,9 @@
 # intellij-racket Changelog
 
 ## [Unreleased]
+### Added
+- Support for IntelliJ 2021 
+
 ## [0.0.10]
 ### Added
 - Added "lint with expand" local inspection
