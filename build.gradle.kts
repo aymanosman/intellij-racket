@@ -11,7 +11,7 @@ plugins {
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "1.5.30"
     // Grammar Kit https://github.com/JetBrains/gradle-grammar-kit-plugin
-    id("org.jetbrains.grammarkit") version "2020.2.1"
+    id("org.jetbrains.grammarkit") version "2021.1.3"
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.1.6"
     // Gradle Changelog Plugin
@@ -23,11 +23,7 @@ plugins {
 group = properties("pluginGroup")
 version = properties("pluginVersion")
 
-sourceSets {
-    main {
-        java.srcDirs("gen")
-    }
-}
+sourceSets["main"].java.srcDirs("gen")
 
 // Configure project's dependencies
 repositories {
