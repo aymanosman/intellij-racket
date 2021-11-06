@@ -1,4 +1,3 @@
-
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
 # intellij-racket Changelog
@@ -60,4 +59,3 @@
 ## [0.0.1-beta] - 2020-07-22
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
-
