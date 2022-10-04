@@ -3,11 +3,14 @@
 # intellij-racket Changelog
 
 ## [Unreleased]
+
+## [0.0.12]
 ### Added
 - Support for Intellij 2022
+
 ## [0.0.11]
 ### Added
-- Support for IntelliJ 2021 
+- Support for IntelliJ 2021
 
 ## [0.0.10]
 ### Added
@@ -16,7 +19,6 @@
 ### Changed
 - Made "unused requires" a local inspection
 
-### Security
 ## [0.0.9]
 ### Added
 - Brace matcher
@@ -31,7 +33,7 @@
 ## [0.0.7]
 ### Added
 - Support parsing braces '{' '}'
-- Support parsing real, rational, signed, inexact and exact numbers  
+- Support parsing real, rational, signed, inexact and exact numbers
 
 ## [0.0.6]
 ### Added
