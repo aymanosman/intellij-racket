@@ -9,7 +9,7 @@ import javax.swing.Icon
 
 class RacketColorSettingsPage : ColorSettingsPage {
     override fun getIcon(): Icon? {
-        return RacketIcons.FILE
+        return RacketIcons.RACKET_FILE
     }
 
     override fun getHighlighter(): SyntaxHighlighter {
