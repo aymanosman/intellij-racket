@@ -4,9 +4,6 @@ import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon
 
 object RacketIcons {
-    // Racket logo
-    val RACKET = getIcon("/icons/racket-logo.svg")
-
     // File icon (Scaled down Racket logo)
     val RACKET_FILE = getIcon("/icons/racket-file.svg")
 
