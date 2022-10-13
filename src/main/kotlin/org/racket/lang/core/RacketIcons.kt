@@ -5,7 +5,7 @@ import javax.swing.Icon
 
 object RacketIcons {
     // File icon (Scaled down Racket logo)
-    val RACKET_FILE = getIcon("/icons/racket-file.svg")
+    val RACKET_FILE = getIcon("/icons/racket-icons/racket-file.svg")
 
     /**
      * Helper function to load icons from filesystem.
