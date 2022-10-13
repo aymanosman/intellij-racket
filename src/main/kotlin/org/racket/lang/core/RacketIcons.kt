@@ -8,7 +8,7 @@ object RacketIcons {
     val RACKET_FILE = getIcon("/icons/racket-icons/racket-file.svg")
 
     /**
-     * Helper function to load icons from filesystem.
+     * Helper function to load icons from the filesystem.
      * @param path  Path to the icon on the filesystem.*/
     private fun getIcon(path: String): Icon = IconLoader.getIcon(path, RacketIcons::class.java)
 }
