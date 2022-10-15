@@ -12,7 +12,7 @@ object RacketFileType : LanguageFileType(RacketLanguage) {
 
     override fun getDefaultExtension(): String = "rkt"
 
-    override fun getIcon(): Icon? = RacketIcons.FILE
+    override fun getIcon(): Icon? = RacketIcons.RACKET_FILE
 
     override fun getCharset(file: VirtualFile, content: ByteArray): String = "UTF-8"
 }
