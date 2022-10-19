@@ -3,6 +3,8 @@
 # intellij-racket Changelog
 
 ## [Unreleased]
+### Added
+- Add file icon for Racket files
 
 ## [0.0.12]
 ### Added
