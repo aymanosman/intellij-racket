@@ -42,7 +42,7 @@ class RacketSdkUtil {
         fun checkRacketIntellijPackageInstalled() {
             val commandLine = GeneralCommandLine()
                     .withExePath(RacketSettings.getInstance().racketPath)
-                    .withParameters("-e", """(collection-file-path "dummy.rkt" "intellij)""")
+                    .withParameters("-e", """(collection-file-path "dummy.rkt" "intellij")""")
             val handler = OSProcessHandler(commandLine)
             handler.addProcessListener(object : CapturingProcessAdapter() {
                 override fun processTerminated(event: ProcessEvent) {
