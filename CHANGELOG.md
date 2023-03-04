@@ -9,7 +9,7 @@
 ### Changed
 - extend plugin compatability from 222 to 223
 
-## [0.0.12]
+## [0.0.13]
 ### Added
 - Add file icon for Racket files
 
