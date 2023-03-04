@@ -2,6 +2,7 @@ package org.racket.ide.highlight
 
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
@@ -16,6 +17,7 @@ class RacketSyntaxHighlightAnnotator : Annotator {
                 when (element.elementType) {
                     RacketElementTypes.HASH_LANG ->
                         annotateHashLang(holder, element)
+
                     RacketElementTypes.IDENTIFIER ->
                         if (KEYWORDS.contains(element.text)) {
                             annotateKeyword(element, holder)
@@ -25,14 +27,18 @@ class RacketSyntaxHighlightAnnotator : Annotator {
     }
 
     private fun annotateKeyword(element: PsiElement, holder: AnnotationHolder) {
-        val annotation = holder.createInfoAnnotation(element, null)
-        annotation.textAttributes = DefaultLanguageHighlighterColors.KEYWORD
+        holder.newAnnotation(HighlightSeverity.INFORMATION, "")
+                .range(element)
+                .textAttributes(DefaultLanguageHighlighterColors.KEYWORD)
+                .create()
     }
 
     private fun annotateHashLang(holder: AnnotationHolder, leaf: LeafPsiElement) {
         val hashLangRange = TextRange(leaf.startOffset, leaf.startOffset + 5)
-        val annotation = holder.createInfoAnnotation(hashLangRange, null)
-        annotation.textAttributes = DefaultLanguageHighlighterColors.KEYWORD
+        holder.newAnnotation(HighlightSeverity.INFORMATION, "")
+                .range(hashLangRange)
+                .textAttributes(DefaultLanguageHighlighterColors.KEYWORD)
+                .create()
     }
 
     companion object {
