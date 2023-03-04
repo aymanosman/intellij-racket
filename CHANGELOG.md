@@ -3,6 +3,13 @@
 # intellij-racket Changelog
 
 ## [Unreleased]
+### Fixed
+- Fixed wrongly claiming user did not install racket package
+
+### Changed
+- extend plugin compatability from 222 to 223
+
+## [0.0.12]
 ### Added
 - Add file icon for Racket files
 
