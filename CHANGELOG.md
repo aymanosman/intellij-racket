@@ -4,8 +4,6 @@
 
 ## Unreleased
 
-## 0.0.16 - 2023-12-26
-
 ### Changed
 - extend plugin compatability from 232 to 233
 
