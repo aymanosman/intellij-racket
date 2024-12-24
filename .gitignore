@@ -4,3 +4,4 @@ build
 /certificate
 
 .env.fish
+/secrets/
