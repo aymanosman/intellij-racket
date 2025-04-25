@@ -4,6 +4,11 @@
 
 ## Unreleased
 
+## 0.0.19 - 2025-04-25
+
+### Changed
+- extend plugin compatability from 243 to 251
+
 ## 0.0.18 - 2024-12-24
 
 ### Changed
