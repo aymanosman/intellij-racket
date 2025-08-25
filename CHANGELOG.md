@@ -7,8 +7,7 @@
 ## 0.0.20 - 2025-08-25
 
 ### Changed
-- extend plugin compatability from 251 to 253
-
+- extend plugin compatibility from 251 to 253
 
 ## 0.0.19 - 2025-04-25
 
