@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## 0.0.21 - 2026-04-12
+
 ### Changed
 - extend plugin compatibility from 253 to 261
 
