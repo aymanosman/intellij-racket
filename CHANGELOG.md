@@ -4,6 +4,13 @@
 
 ## Unreleased
 
+### Changed
+- remove the upper IDE compatibility limit
+- migrate to the maintained GrammarKit plugin and IntelliJ Platform Gradle Plugin 2.19
+
+### Fixed
+- classify invalid boolean literals as bad characters
+
 ## 0.0.21 - 2026-04-12
 
 ### Changed
