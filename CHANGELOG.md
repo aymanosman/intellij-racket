@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## 0.0.22 - 2026-09-27
+
 ### Changed
 - remove the upper IDE compatibility limit
 - migrate to the maintained GrammarKit plugin and IntelliJ Platform Gradle Plugin 2.19
