@@ -763,7 +763,7 @@ class RacketLexer implements FlexLexer {
                   || xs.equals("#F")) {
                   return RacketElementTypes.BOOLEAN;
               } else {
-                  return TokenType.ERROR_ELEMENT;
+                  return TokenType.BAD_CHARACTER;
               }
           }
             }

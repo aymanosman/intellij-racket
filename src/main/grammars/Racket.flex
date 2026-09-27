@@ -177,7 +177,7 @@ here_string="#<<EOF\n" ~"\nEOF"
                   || xs.equals("#F")) {
                   return RacketElementTypes.BOOLEAN;
               } else {
-                  return TokenType.ERROR_ELEMENT;
+                  return TokenType.BAD_CHARACTER;
               }
           }
       }

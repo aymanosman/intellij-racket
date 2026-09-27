@@ -15,7 +15,7 @@ plugins {
 group = providers.gradleProperty("pluginGroup").get()
 version = providers.gradleProperty("pluginVersion").get()
 
-sourceSets["main"].java.srcDirs("gen")
+sourceSets["main"].java.srcDir(files("gen").builtBy(tasks.named("generateParser")))
 
 // Set the JVM language level used to build the project.
 kotlin {
