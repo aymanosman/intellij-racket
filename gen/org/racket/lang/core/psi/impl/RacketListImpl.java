@@ -21,6 +21,7 @@ public class RacketListImpl extends ASTWrapperPsiElement implements RacketList {
     visitor.visitList(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof RacketVisitor) accept((RacketVisitor)visitor);
     else super.accept(visitor);

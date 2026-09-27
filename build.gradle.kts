@@ -1,8 +1,8 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.grammarkit.tasks.GenerateLexer
-import org.jetbrains.grammarkit.tasks.GenerateParser
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.tasks.GenerateLexerTask
+import org.jetbrains.intellij.platform.gradle.tasks.GenerateParserTask
 
 plugins {
     id("java") // Java support
@@ -51,6 +51,7 @@ dependencies {
         bundledModules(providers.gradleProperty("platformBundledModules").map { it.split(',') })
 
         testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.Plugin.Java)
     }
 }
 
@@ -128,19 +129,18 @@ tasks {
     }
 }
 
-task("generateLexer", GenerateLexer::class) {
-    source = "src/main/grammars/Racket.flex"
-    targetDir = "gen/org/racket/lang/core/lexer/"
-    targetClass = "RacketLexer"
+tasks.named<GenerateLexerTask>("generateLexer") {
+    sourceFile = file("src/main/grammars/Racket.flex")
+    targetRootOutputDir = layout.projectDirectory.dir("gen")
+    pathToClass = "org/racket/lang/core/lexer/RacketLexer.java"
     purgeOldFiles = true
-    skeleton = "src/main/grammars/idea-flex.skeleton"
 }
 
-task("generateParser", GenerateParser::class) {
+tasks.named<GenerateParserTask>("generateParser") {
     dependsOn("generateLexer")
-    source = "src/main/grammars/Racket.bnf"
-    targetRoot = "gen"
-    pathToParser = "/org/racket/lang/core/parser/RacketParser.java"
-    pathToPsiRoot = "/org/racket/lang/core/psi"
+    sourceFile = file("src/main/grammars/Racket.bnf")
+    targetRootOutputDir = layout.projectDirectory.dir("gen")
+    pathToParser = "org/racket/lang/core/parser/RacketParser.java"
+    pathToPsiRoot = "org/racket/lang/core/psi"
     purgeOldFiles = true
 }
