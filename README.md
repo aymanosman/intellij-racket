@@ -1,6 +1,5 @@
 # intellij-racket
 
-![Build](https://github.com/aymanosman/intellij-racket/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/14752-racket.svg)](https://plugins.jetbrains.com/plugin/14752-racket)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/14752-racket.svg)](https://plugins.jetbrains.com/plugin/14752-racket)
 
