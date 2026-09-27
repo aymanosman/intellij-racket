@@ -1,7 +1,3 @@
-# Development and publishing
-
-This project is built and published locally. It does not use GitHub Actions.
-
 ## Verify the plugin
 
 ```sh
@@ -25,8 +21,6 @@ Set the required credentials in the current shell:
 export PRIVATE_KEY_PASSWORD='<private-key password>'
 export PUBLISH_TOKEN='<JetBrains Marketplace token>'
 ```
-
-Never commit certificates, private keys, passwords, or tokens.
 
 ## Publish a release
 
